@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor="yellow">
+    <h1>Home page</h1>
+
+    <a href="home">Home</a>
+    <a href="about">About</a>
+    <a href="service">Services</a>
+    <a href="contact">Contact</a>
+    <a href="search">Search</a>
+
+    <hr>
+
+        <form method="post" action="searchdata">
+            Enter rollno: <input type="text" name="rollno">
+            <input type="submit">
+        </form><br><br>
+
+        <table bgcolor="lightgreen" width="500" >
+            <tr>
+                <th>Rollno</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Fees</th>
+            </tr>
+        <% Data.forEach((key)=>{ %>
+            <tr align="centre">
+                <td><%= key.rollno %></td>
+            <td><%= key.name %></td>
+            <td><%= key.city %></td>
+            <td><%= key.fees %></td>  
+            </tr>
+          
+            <% })%>
+        </table>
+    <p>www.company.com</p>
+</body>
+</html>
