@@ -1,0 +1,25 @@
+{
+  "mydata": [
+    {
+      "name": "Keshav",
+      "fees": "30000",
+      "city": "Bhopal",
+      "rollno": 1324,
+      "id": "37de"
+    },
+    {
+      "name": "naeem",
+      "fees": "350000",
+      "city": "Satna",
+      "rollno": 1234,
+      "id": "966b"
+    },
+    {
+      "name": "Ram",
+      "fees": "120000",
+      "city": "pune",
+      "rollno": "6789",
+      "id": "a4d0"
+    }
+  ]
+}
