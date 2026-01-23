@@ -1,17 +1,18 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'
-import { Decrement, Increment } from './Pages/counterSlice';
+import { kuchbhi } from './Pages/counterSlice';
 function App() {
-  const myans=useSelector((state)=>state.mycounter.count);
+  const clr=useSelector((state)=>state.bgcolor.color);
   const dispatch=useDispatch();
   return (<>
   <h1>Wellcome in this web.....</h1>
   <hr/>
+  <button onClick={()=>{dispatch(kuchbhi())}}>Change color</button>
+<div style={{backgroundColor:clr,width:"400px",height:"300px"}}>
+hello
+</div>
 
-  <button onClick={()=>{dispatch(Increment())}}>Increment</button>
-  <h1>{myans}</h1>
-  <button onClick={()=>{dispatch(Decrement())}}>Decrement</button>
   </>
   )
 }
