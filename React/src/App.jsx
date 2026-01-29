@@ -1,24 +1,32 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
-import { changeTheme } from './Pages/counterSlice';
-function App() {
-  const clr=useSelector((state)=>state.changecolor.color)
-  const dispatch=useDispatch();
- return(
-  <>
-  <h1>Wellcome in this web.......</h1>
-  <ht/>
-  <button onClick={()=>{dispatch(changeTheme())}}>Change color</button>
-    <br/>
-    <br/>
-  <div style={{backgroundColor:clr,width:"200px",height:"300px"}}>
+import { useDispatch, useSelector } from 'react-redux'
+import { changeColor } from './Pages/todoSlice';
+import { useState } from 'react';
 
-  </div>
-  
-  
+function App() {
+  const [val, setval] = useState("");
+  const clr = useSelector(state => state.mycolor.color);
+  const dispatch = useDispatch();
+  return (<>
+    <h1>Wellcome in this web...</h1>
+    <hr />
+    Enter Number :<input type="text"
+      value={val}
+      onChange={(e) => { setval(e.target.value) }} />
+
+    <br /><br />
+    <button onClick={() => { dispatch(changeColor({txt:val})) }}>Change color</button>
+    <br /><br />
+    <div style={{ "height": "200px", "width": "200px", "backgroundColor": clr }}>
+
+    </div>
+
+
+
+
+
   </>
- )
+  )
 }
 
 export default App
