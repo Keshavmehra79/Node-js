@@ -27,11 +27,16 @@ const MyDelete = async(req, res) => {
     res.send({message:"Data Deleted succefully!"});
 };
 
-
+const myedit=async(req,res)=>{
+    const {id}=req.query;
+        const data=await stuModel.findById(id)        
+         res.send(data)
+}
 
 module.exports={
     home,
     saveData,
     display,
-    MyDelete
+    MyDelete,
+    myedit
 }

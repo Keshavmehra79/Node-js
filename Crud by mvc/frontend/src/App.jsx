@@ -7,6 +7,7 @@ import Display from './pages/Display'
 import UPdate from './pages/UPdate'
 import Contact from './pages/Contact'
 import Search from './pages/Search'
+import Myedit from './pages/Myedit'
 function App() {
   return (<>
   <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
       <Route path='update' element={<UPdate/>}/>
       <Route path='search' element={<Search/>}/>
       <Route path='contact' element={<Contact/>}/>
+      <Route path='myedit/:id' element={<Myedit/>}/>
 
     </Route>
   </Routes>

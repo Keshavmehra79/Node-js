@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function Display() {
   const [Data,setData]=useState([]);
   const loaddata=async ()=>{
@@ -17,6 +18,11 @@ function Display() {
       loaddata();
   }
 
+  const navigate=useNavigate();
+  const myedit=(id)=>{
+      navigate(`/myedit/${id}`)
+  }
+
   const ans=Data.map((key)=>{
     return(<>
     <tr>
@@ -28,7 +34,7 @@ function Display() {
         <button onClick={()=>{myDel(key._id)}}>Delete</button>
       </td>
       <td>
-        <button>Edit</button>
+        <button onClick={()=>{myedit(key._id)}}>Edit</button>
       </td>
     </tr>
     </>)
