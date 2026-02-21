@@ -22,7 +22,7 @@ function Insert() {
   }
   
   return (<>
-  <h1>This is insert page....</h1>
+  <h1 className='text'>This is insert page....</h1>
 
   <form onSubmit={handelsubmit}>
     Enter rollno:<input type="text" name='rollno' onChange={handelchange}/><br/><br/>

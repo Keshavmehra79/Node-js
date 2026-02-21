@@ -33,10 +33,23 @@ const myedit=async(req,res)=>{
          res.send(data)
 }
 
+const myupdate=async(req,res)=>{
+    const{  _id,rollno,name,city,fees}=req.body;
+    await stuModel.findByIdAndUpdate(_id,{rollno,name,city,fees});
+    res.send("Data updated succefully \\\\")
+}
+
+const search=async(req,res)=>{
+    const {rollno}=req.query;
+    const student=await stuModel.find({rollno:rollno}) 
+    res.send(student)
+}
 module.exports={
     home,
     saveData,
     display,
     MyDelete,
-    myedit
+    myedit,
+    myupdate,
+    search
 }

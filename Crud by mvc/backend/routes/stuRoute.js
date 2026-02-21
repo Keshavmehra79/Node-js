@@ -7,4 +7,6 @@ route.post("/savedata",stuController.saveData)
 route.get("/display",stuController.display)
 route.get("/delete", stuController.MyDelete)
 route.get("/myedit",stuController.myedit)
+route.post('/myupdate',stuController.myupdate)
+route.get("/search",stuController.search)
 module.exports=route;
