@@ -75,7 +75,7 @@
 //     if(err) throw err;
 //     console.log("File created succefully");
 // })
-const fs=require("fs");
+// const fs=require("fs");
 // fs.writeFile("raj.txt","hello content second!",(err,file)=>{
 //     if(err) throw err;
 //     console.log("File created succefully");
@@ -86,7 +86,17 @@ const fs=require("fs");
 //     console.log("file deleted!")
 // })
 
-fs.rename("keshav.txt","ranu.txt",(err)=>{
-    if(err) throw err;
-    console.log("file renamed")
-})
+// fs.rename("keshav.txt","ranu.txt",(err)=>{
+//     if(err) throw err;
+//     console.log("file renamed")
+// })
+
+
+const express=require("express");
+const app=express();
+const stuRoute=require("./route/stuRoute");
+app.get("/students",stuRoute);
+
+app.listen(9000,()=>{
+    console.log("server run on 9000")
+});

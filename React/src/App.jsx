@@ -12,17 +12,17 @@ function App() {
   const [myid,setmyid]=useState("");
   let sno = 0;
 
-      const myEdit=(task,id)=>{
-        settask(task);
-        setmybtn(false);
-        setmyid(id);
+      const handleEdit=(task,id)=>{
+        settask(task)
+        setmybtn(false)
+        setmyid(id)
         
       }
 
       const saveEdit=(myid,task)=>{
         dispatch(myEdit({id:myid,task:task}));
         settask("");
-        setmybtn(false)
+        setmybtn(true)
       }
 
     
@@ -58,7 +58,7 @@ function App() {
         </td>
 
         <td>
-          <button onClick={()=>{myEdit(key.task,key.id)}}>Edit</button>
+          <button onClick={()=>{handleEdit(key.task,key.id)}}>Edit</button>
         </td>
       </tr>
     </>)
@@ -78,7 +78,7 @@ function App() {
       </>):(
 
         <>
-          <button onClick={saveEdit}>Update</button>
+          <button onClick={()=>saveEdit(myid,task)}>Update</button>
         </>
       )}
     <br /><br />

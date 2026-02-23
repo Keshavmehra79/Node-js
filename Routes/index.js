@@ -1,11 +1,9 @@
 const express=require("express");
 const app=express();
+const TeacherRoute=require("./routes/teacherRoute");
 
-const stuRoute=require("./routers/stuRoutes");
-app.use("/students",stuRoute);
-
-
+app.use("/teachers",TeacherRoute)
 
 app.listen(9000,()=>{
-    console.log("Server run on 9000 port ")
+    console.log("server run on 9000")
 });

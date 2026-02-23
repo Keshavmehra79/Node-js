@@ -36,12 +36,12 @@ const todoSlice=createSlice({
       },
 
       myEdit:(state,actions)=>{
+
          for(var i=0;i<state.task.length;i++){
          if(state.task[i].id==actions.payload.id){
             state.task[i].task=actions.payload.task;
          }
          }
-         console.log(actions.payload);
          
       }
 
