@@ -7,6 +7,7 @@ import Insert from './Pages/Insert'
 import Display from './Pages/Display'
 import Update from './Pages/Update'
 import Search from './Pages/Search'
+import Myedit from './Pages/Myedit'
 
 function App() {
   return (<>
@@ -19,6 +20,7 @@ function App() {
       <Route path="/display" element={<Display/>}/>
       <Route path="/update" element={<Update/>}/>
       <Route path="/search" element={<Search/>}/>
+      <Route path='/myedit/:id' element={<Myedit/>}/>
 
       </Route>
     </Routes>

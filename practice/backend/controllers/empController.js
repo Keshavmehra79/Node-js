@@ -24,9 +24,25 @@ const myDel=async(req,res)=>{
    await empModel.findByIdAndDelete(id)
     res.send("Deleted succefully.....")
 }
+
+const Myedit=async (req,res)=>{
+    const {id}=req.query;
+    const Data=await empModel.findById(id);
+    res.send(Data)
+}
+
+const saveData=async(req,res)=>{
+    const {id}=req.query;
+   const {empname,empsalary,designation,empcity}=req.body;
+
+    await empModel.findByIdAndUpdate(id,{empname,empsalary,designation,empcity});   
+    res.send("Data updated succefully.....")
+}
 module.exports={
     Home,
     Insert,
     display,
-    myDel
+    myDel,
+    Myedit,
+    saveData
 }
