@@ -1,25 +1,23 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from './Layout';
+import Display from './Display';
+import Insert from './Insert';
+import Home from './Home';
 
 function App() {
-  const [image,setimage]=useState("")
+  return(<>
+  <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Layout/>}>    
+    <Route  index element={<Home/>}/>
+    <Route path='/insert'  element={<Insert/>}/>
+    <Route path='/display' element={<Display/>}/>
 
-  const handleImage=(e)=>{
-      setimage(e.target.files[0])
-  }
-
-  const handleSubmit=async()=>{
-    const formdata=new FormData();
-    formdata.append("myimage",image)
-    const res=await axios.post("http://localhost:9000/students/upload",formdata);
-    console.log(res.data)
-  }
-  return (<>
-  <h1>File uploading with multer...</h1>
-  Upload Image: <input type='file' onChange={handleImage}/>
-  <button onClick={handleSubmit}>Upload</button>
-  </>
-  )
+</Route>
+  </Routes></BrowserRouter>
+  </>)
 }
 
 export default App
