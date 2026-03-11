@@ -8,5 +8,6 @@ route.get("/display",empController.display);
 route.delete("/delete",empController.myDel);
 route.get("/myedit",empController.Myedit);
 route.post("/savedata",empController.saveData)
+route.get("/search",empController.Search)
 
 module.exports=route;

@@ -38,11 +38,18 @@ const saveData=async(req,res)=>{
     await empModel.findByIdAndUpdate(id,{empname,empsalary,designation,empcity});   
     res.send("Data updated succefully.....")
 }
+
+const Search=async(req,res)=>{
+    const {city}=req.query;
+   const Data= await empModel.find({empcity:city})
+     res.send(Data)   
+}
 module.exports={
     Home,
     Insert,
     display,
     myDel,
     Myedit,
-    saveData
+    saveData,
+    Search
 }
