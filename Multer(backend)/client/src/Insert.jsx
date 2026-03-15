@@ -3,7 +3,9 @@ import React, { useState } from 'react'
 function Insert() {
     const [input,setInput]=useState({})
     const [images,setImage]=useState([])
- 
+    const [loading,setLoading] = useState(false)
+
+
     const setImg=(e)=>{
   setImage([...e.target.files]);
 }
@@ -14,6 +16,7 @@ function Insert() {
       setInput(values=>({...values,[name]:value}));
     }
     const handleSubmit=async()=>{
+      setLoading(true)
         const formdata=new FormData();
         for(let key in input){
           formdata.append(key,input[key])
@@ -30,9 +33,12 @@ function Insert() {
     "Content-Type":"multipart/form-data"
   }
 });
-        console.log(response.data);
-        
+        alert(response.data);
+          setLoading(false)
     }
+
+
+
   return (<>
     <div className="max-w-md mx-auto bg-white shadow-lg rounded-xl p-6 mt-10">
 
@@ -84,9 +90,12 @@ function Insert() {
 
     <button
       onClick={handleSubmit}
-      className="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition"
-    >
-      Upload File
+       className="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition flex justify-center items-center gap-2"
+>
+  {loading && (
+  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+)}
+{loading ? "Uploading..." : "Upload File"}
     </button>
 
   </div>
