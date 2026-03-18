@@ -24,7 +24,7 @@ const userlogin=async(req,res)=>{
    }
 
 
-    res.status(200).send("Logged in Succefully")
+    res.status(200).send({user:user,msg:"Logged in Succefully"})
 
 
 }

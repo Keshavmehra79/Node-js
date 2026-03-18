@@ -16,11 +16,13 @@ function Login() {
         try {
             const res = await axios.post("http://localhost:9000/user/login", input);
             if(res.status==200){
-                alert(res.data)
+              localStorage.setItem("name",res.data.user.name)
+              localStorage.setItem("email",res.data.user.email)
+                alert(res.data.msg)
                 toast.success("You are logged in!")
             }  
             
-            navigate("/home")
+            navigate("/dashboard")
 
         } catch (error) {
             console.log(error.response.data)
