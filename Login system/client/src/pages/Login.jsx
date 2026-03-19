@@ -15,14 +15,8 @@ function Login() {
     const handleSubmit = async() => {
         try {
             const res = await axios.post("http://localhost:9000/user/login", input);
-            if(res.status==200){
-              localStorage.setItem("name",res.data.user.name)
-              localStorage.setItem("email",res.data.user.email)
-                alert(res.data.msg)
-                toast.success("You are logged in!")
-            }  
-            
-            navigate("/dashboard")
+            localStorage.setItem("token",res.data.token)
+            toast.success("You are logged in!")
 
         } catch (error) {
             console.log(error.response.data)

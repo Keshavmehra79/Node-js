@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 function Dashboard() {
     const navigate=useNavigate();
@@ -6,6 +6,12 @@ function Dashboard() {
     localStorage.clear();
         navigate("/login")
    }
+
+   useEffect(()=>{
+        if(!localStorage.getItem("name")){
+      navigate("/home")
+    }
+   },[])
   return (
     <>
   {/* Header */}
