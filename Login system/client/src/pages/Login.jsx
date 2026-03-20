@@ -16,6 +16,7 @@ function Login() {
         try {
             const res = await axios.post("http://localhost:9000/user/login", input);
             localStorage.setItem("token",res.data.token)
+            navigate("/home")
             toast.success("You are logged in!")
 
         } catch (error) {
@@ -63,7 +64,7 @@ function Login() {
       >
         Submit
       </button>
-
+      <h1 className='text-center'>You don't have an account? <button onClick={()=>{navigate("/registration")}} className='cursor-pointer text-blue-800'>Signup</button></h1>
     </div>
 
   </div>

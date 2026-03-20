@@ -36,7 +36,8 @@ const userlogin=async(req,res)=>{
 const userAuth=async(req,res)=>{
     const token=req.header("mytoken")
     const verified=await jwt.verify(token,"keshav1234")
-    res.send("okk")
+    const user=await userModel.findById(verified.id)
+    res.status(200).send({user})
 }
 
 module.exports={

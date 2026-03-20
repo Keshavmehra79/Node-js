@@ -10,7 +10,7 @@ function Layout() {
 
         <div className="space-x-6">
           <Link to="home" className="hover:text-yellow-400">Home</Link>
-          <Link to="registration" className="hover:text-yellow-400">Registration</Link>
+          <Link to="registration" className="hover:text-yellow-400">Signup</Link>
           <Link to="login" className="hover:text-yellow-400">Login</Link>
         </div>
       </div>
@@ -21,9 +21,10 @@ function Layout() {
       </div>
 
       {/* Footer */}
-      <div className="bg-gray-800 text-white text-center py-3">
-        www.mycompany.com
-      </div>
+      
+       <footer className="bg-gray-800 h-50 text-white text-center py-4">
+    <p>© 2026 MyCompany | All Rights Reserved</p>
+  </footer>
 
     </div>
   );
