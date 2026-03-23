@@ -1,3 +1,4 @@
+
 const express=require("express");
 const app=express();
 const empRoute=require("./routes/empRouter")
@@ -8,7 +9,7 @@ app.use(cors())
 // Body-parser middleware
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
-mongoose.connect("mongodb://127.0.0.1:27017/18feb").then(()=>{
+mongoose.connect("mongodb://127.0.0.1:27017/JWT").then(()=>{
     console.log("Db connected succefully");
 })  
 
@@ -18,7 +19,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/18feb").then(()=>{
 
 app.use("/employees",empRoute);
 
-app.listen(9000,()=>{
-    console.log("server run on 9000 port ");
+
+app.listen(4000,()=>{
+    console.log("server run on 4000 port ");
     
 })

@@ -3,8 +3,8 @@ const mongoose=require("mongoose");
 const empSchema=new mongoose.Schema({
     empname:String,
     empsalary:Number,
-    designation:String,
-    empcity:String
+    email:String,
+    password:String
 })
 
-module.exports=mongoose.model("practicedbs",empSchema);
+module.exports=mongoose.model("JWT",empSchema);

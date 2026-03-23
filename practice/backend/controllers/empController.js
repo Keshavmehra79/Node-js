@@ -1,55 +1,50 @@
 const empModel=require("../models/empModel")
-const Home=(req,res)=>{
-    res.send("working.......")
+const bcrypt=require("bcrypt");
+const jwt =require("jsonwebtoken")
+
+
+    const Login=async(req,res)=>{
+        const {email, password}=req.body;
+        const user=await empModel.findOne({email:email})
+        const isMatch=await bcrypt.compare(password,user.password)
+        console.log(user)
+        if(!user){
+            res.status(400).send("Invalid email")
+        }  
+        if(!isMatch){
+            res.status(400).send("Invalid password")
+        } 
+        
+        const token=await jwt.sign({id:user._id},'mehra123',{expiresIn:"30 days"})
+        
+        
+        res.status(200).send({token:token})
+    }
+
+
+const Signup=async(req,res)=>{
+    const { name,salary,email,password}=req.body;
+    const salt=await bcrypt.genSalt(10)
+    const newPassword=await bcrypt.hash(password,salt);
+    const employee=await empModel.create({
+          empname:name,
+         empsalary:salary,
+            email:email,
+            password:newPassword
+    })
+    res.send("okk")
+    
 }
 
-const Insert=async(req,res)=>{
-       const {  name,  salary, designation,city}=req.body;
-       const employee=await empModel.create({
-        empname:name,
-        empsalary:salary,
-        designation:designation,
-        empcity:city
-       })
-    res.send("Data sent succefully") 
+const userAuth=async(req,res)=>{
+    const token=await req.header("token")
+    const verified=await jwt.verify(token,"mehra123")    
+    const user=await empModel.findById(verified.id);
+    res.status(200).send({user})
 }
 
-const display=async (req,res)=>{
-    const empdata=await empModel.find();
-    res.send(empdata);
-}
-
-const myDel=async(req,res)=>{
-    const {id}=req.query;
-   await empModel.findByIdAndDelete(id)
-    res.send("Deleted succefully.....")
-}
-
-const Myedit=async (req,res)=>{
-    const {id}=req.query;
-    const Data=await empModel.findById(id);
-    res.send(Data)
-}
-
-const saveData=async(req,res)=>{
-    const {id}=req.query;
-   const {empname,empsalary,designation,empcity}=req.body;
-
-    await empModel.findByIdAndUpdate(id,{empname,empsalary,designation,empcity});   
-    res.send("Data updated succefully.....")
-}
-
-const Search=async(req,res)=>{
-    const {city}=req.query;
-   const Data= await empModel.find({empcity:city})
-     res.send(Data)   
-}
 module.exports={
-    Home,
-    Insert,
-    display,
-    myDel,
-    Myedit,
-    saveData,
-    Search
+    Signup,
+    Login,
+    userAuth
 }
