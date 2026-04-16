@@ -1,3 +1,5 @@
+import cookieParser from "cookie-parser";
+
 class stuController{
     static Login=async(req,res)=>{
         const { name, email, mobile }=req.body;
@@ -14,6 +16,18 @@ class stuController{
         } else{
             res.send({msg:"Not logged in"})
         }
+    }
+
+    static LoginCookie=async(req,res)=>{
+        const {name,email}=req.body;
+        res.cookie("name",name,{maxAge:60*1000});
+        res.cookie("email",email,"165862",{maxAge:60*1000});
+        res.send("Cookie set....")
+    }
+
+    static getCookie=async(req,res)=>{
+        const {name,email}=req.cookies;
+        res.send({name:name,email:email})
     }
 }
 
