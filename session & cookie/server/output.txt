@@ -1,0 +1,2 @@
+hello,world,
+ writing to a stream is easy
